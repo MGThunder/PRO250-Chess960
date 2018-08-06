@@ -10,11 +10,11 @@ namespace Chess
     {
         private ChessBoard board;
         public bool lastMovedWhite;
-        public ChessGame()
+        public ChessGame(bool isStandardChess)
         {
             board = new ChessBoard();
-            board.placeBlackFigures();
-            board.placeWhiteFigures();
+            board.placeBlackFigures(isStandardChess);
+            board.placeWhiteFigures(isStandardChess);
             lastMovedWhite=false;
           
         }

@@ -54,42 +54,46 @@ namespace Chess
                 return this.chessBoard;
             }
         }
-        public void placeBlackFigures()
+        public void placeBlackFigures(bool isStandardChess)
         {
             Figure[] pawns = new Figure[8];
             Figure[] otherFigures = new Figure[8];
             char currentChar = 'A';
             char charPositionPawn = 'A';
-            for (int i = 0; i < 8; i++)
+
+            if (isStandardChess)
             {
-
-                pawns[i] = new Pawn(charPositionPawn, 2, false);
-                charPositionPawn++;
-
-
-                if ((currentChar == 'A') || (currentChar == 'H'))
+                for (int i = 0; i < 8; i++)
                 {
-                    otherFigures[i] = new Rook(currentChar, 1, false);
-                }
-                else if ((currentChar == 'B') || (currentChar == 'G'))
-                {
-                    otherFigures[i] = new Knight(currentChar, 1, false);
-                }
-                else if ((currentChar == 'C') || (currentChar == 'F'))
-                {
-                    otherFigures[i] = new Bishop(currentChar, 1, false);
-                }
-                else if (currentChar == 'E')
-                {
-                    otherFigures[i] = new King(currentChar, 1, false);
-                }
-                else
-                {
-                    otherFigures[i] = new Queen(currentChar, 1, false);
 
-                }
+                    pawns[i] = new Pawn(charPositionPawn, 2, false);
+                    charPositionPawn++;
 
-                currentChar++;
+
+                    if ((currentChar == 'A') || (currentChar == 'H'))
+                    {
+                        otherFigures[i] = new Rook(currentChar, 1, false);
+                    }
+                    else if ((currentChar == 'B') || (currentChar == 'G'))
+                    {
+                        otherFigures[i] = new Knight(currentChar, 1, false);
+                    }
+                    else if ((currentChar == 'C') || (currentChar == 'F'))
+                    {
+                        otherFigures[i] = new Bishop(currentChar, 1, false);
+                    }
+                    else if (currentChar == 'E')
+                    {
+                        otherFigures[i] = new King(currentChar, 1, false);
+                    }
+                    else
+                    {
+                        otherFigures[i] = new Queen(currentChar, 1, false);
+
+                    }
+
+                    currentChar++;
+                }
             }
             for (int i = 0; i < 8; i++)
             {
@@ -99,42 +103,46 @@ namespace Chess
 
 
         }
-        public void placeWhiteFigures()
+        public void placeWhiteFigures(bool isStandardChess)
         {
             Figure[] pawns = new Figure[8];
             Figure[] otherFigures = new Figure[8];
             char currentChar = 'A';
             char charPositionPawn = 'A';
-            for (int i = 0; i < 8; i++)
+
+            if (isStandardChess)
             {
-
-                pawns[i] = new Pawn(charPositionPawn, 7, true);
-                charPositionPawn++;
-
-
-                if ((currentChar == 'A') || (currentChar == 'H'))
+                for (int i = 0; i < 8; i++)
                 {
-                    otherFigures[i] = new Rook(currentChar, 8, true);
-                }
-                else if ((currentChar == 'B') || (currentChar == 'G'))
-                {
-                    otherFigures[i] = new Knight(currentChar, 8, true);
-                }
-                else if ((currentChar == 'C') || (currentChar == 'F'))
-                {
-                    otherFigures[i] = new Bishop(currentChar, 8, true);
-                }
-                else if (currentChar == 'E')
-                {
-                    otherFigures[i] = new King(currentChar, 8, true);
-                }
-                else
-                {
-                    otherFigures[i] = new Queen(currentChar, 8, true);
 
-                }
+                    pawns[i] = new Pawn(charPositionPawn, 7, true);
+                    charPositionPawn++;
 
-                currentChar++;
+
+                    if ((currentChar == 'A') || (currentChar == 'H'))
+                    {
+                        otherFigures[i] = new Rook(currentChar, 8, true);
+                    }
+                    else if ((currentChar == 'B') || (currentChar == 'G'))
+                    {
+                        otherFigures[i] = new Knight(currentChar, 8, true);
+                    }
+                    else if ((currentChar == 'C') || (currentChar == 'F'))
+                    {
+                        otherFigures[i] = new Bishop(currentChar, 8, true);
+                    }
+                    else if (currentChar == 'E')
+                    {
+                        otherFigures[i] = new King(currentChar, 8, true);
+                    }
+                    else
+                    {
+                        otherFigures[i] = new Queen(currentChar, 8, true);
+
+                    }
+
+                    currentChar++;
+                }
             }
             for (int i = 0; i < 8; i++)
             {

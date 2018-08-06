@@ -19,14 +19,8 @@ namespace Chess
             ///Some Testing
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            window ChessGame = new window("Agd","Marto");
-            ChessGame.AddEvents();
-            Application.Run(ChessGame);
-            
-           
-           
-            
-            
+            Start mainWindow = new Start();
+            Application.Run(mainWindow);
         }
 
     }

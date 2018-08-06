@@ -65,6 +65,12 @@
     <Compile Include="Figures\Pawn.cs" />
     <Compile Include="Figures\Queen.cs" />
     <Compile Include="Figures\Rook.cs" />
+    <Compile Include="GUI\Start.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Start.Designer.cs">
+      <DependentUpon>Start.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\window.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="GUI\Start.resx">
+      <DependentUpon>Start.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\window.resx">
       <DependentUpon>window.cs</DependentUpon>
     </EmbeddedResource>

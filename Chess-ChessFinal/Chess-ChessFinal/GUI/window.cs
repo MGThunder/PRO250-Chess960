@@ -17,13 +17,13 @@ namespace Chess.GUI
         private bool isWhitePlayersTurn;
         private PictureBox markedBox;
         private Color color;
-        public window(string firstName, string SecondName)
+        public window(bool isStandardChess)
         {
            
             boxes = new List<PictureBox>(64);
             InitializeComponent();
             AddBoxes();
-            currentGame = new ChessGame();
+            currentGame = new ChessGame(isStandardChess);
             //this.playerWhiteName.Text = firstName;
             //this.playerBlackName.Text = SecondName;
             
