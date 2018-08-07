@@ -576,5 +576,15 @@ namespace Chess.GUI
         {
 
         }
+
+        private void window_Leave(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void window_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

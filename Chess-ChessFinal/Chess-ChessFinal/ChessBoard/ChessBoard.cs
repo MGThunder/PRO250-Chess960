@@ -12,6 +12,10 @@ namespace Chess
     public class ChessBoard
     {
         private ChessBox[,] chessBoard;
+        char[] boardSpaces = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
+        Figure[] otherFigures = new Figure[8];
+        bool valid = false;
+        Random random = new Random();
 
         public ChessBoard()
         {
@@ -57,7 +61,6 @@ namespace Chess
         public void placeBlackFigures(bool isStandardChess)
         {
             Figure[] pawns = new Figure[8];
-            Figure[] otherFigures = new Figure[8];
             char currentChar = 'A';
             char charPositionPawn = 'A';
 
@@ -95,6 +98,22 @@ namespace Chess
                     currentChar++;
                 }
             }
+            else if (!isStandardChess)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    pawns[i] = new Pawn(charPositionPawn, 2, false);
+                    charPositionPawn++;
+                }
+                otherFigures[0] = new Bishop((char)(('H' - otherFigures[0].Xpositon) + 'A'), 1, false);
+                otherFigures[1] = new Bishop((char)(('H' - otherFigures[1].Xpositon) + 'A'), 1, false);
+                otherFigures[2] = new Rook((char)(('H' - otherFigures[2].Xpositon) + 'A'), 1, false);
+                otherFigures[3] = new Rook((char)(('H' - otherFigures[3].Xpositon) + 'A'), 1, false);
+                otherFigures[4] = new Knight((char)(('H' - otherFigures[4].Xpositon) + 'A'), 1, false);
+                otherFigures[5] = new Knight((char)(('H' - otherFigures[5].Xpositon) + 'A'), 1, false);
+                otherFigures[6] = new Queen((char)(('H' - otherFigures[6].Xpositon) + 'A'), 1, false);
+                otherFigures[7] = new King((char)(('H' - otherFigures[7].Xpositon) + 'A'), 1, false);
+            }
             for (int i = 0; i < 8; i++)
             {
                 placeFigure(pawns[i]);
@@ -106,7 +125,6 @@ namespace Chess
         public void placeWhiteFigures(bool isStandardChess)
         {
             Figure[] pawns = new Figure[8];
-            Figure[] otherFigures = new Figure[8];
             char currentChar = 'A';
             char charPositionPawn = 'A';
 
@@ -143,14 +161,48 @@ namespace Chess
 
                     currentChar++;
                 }
+                for (int i = 0; i < 8; i++)
+                {
+                    placeFigure(pawns[i]);
+                    placeFigure(otherFigures[i]);
+                }
             }
-            for (int i = 0; i < 8; i++)
+            else if (!isStandardChess)
             {
-                placeFigure(pawns[i]);
-                placeFigure(otherFigures[i]);
+                for (int i = 0; i < 8; i++)
+                {
+
+                    pawns[i] = new Pawn(charPositionPawn, 7, true);
+                    charPositionPawn++;
+
+                    currentChar++;
+                }
+                do
+                {
+                    char[] piecePlacement = boardSpaces.OrderBy(x => random.Next()).ToArray();
+                    otherFigures[0] = new Bishop(piecePlacement[0], 8, true);
+                    otherFigures[1] = new Bishop(piecePlacement[1], 8, true);
+                    otherFigures[2] = new Rook(piecePlacement[2], 8, true);
+                    otherFigures[3] = new Rook(piecePlacement[3], 8, true);
+                    otherFigures[4] = new Knight(piecePlacement[4], 8, true);
+                    otherFigures[5] = new Knight(piecePlacement[5], 8, true);
+                    otherFigures[6] = new Queen(piecePlacement[6], 8, true);
+                    otherFigures[7] = new King(piecePlacement[7], 8, true);
+                    if (!(otherFigures[0].Xpositon % 2 == otherFigures[1].Xpositon % 2) &&
+                        (((otherFigures[2].Xpositon > otherFigures[7].Xpositon) && (otherFigures[3].Xpositon < otherFigures[7].Xpositon)) ||
+                        ((otherFigures[2].Xpositon < otherFigures[7].Xpositon) && (otherFigures[3].Xpositon > otherFigures[7].Xpositon))))
+                    {
+                        valid = true;
+                    }
+                } while (!valid);
+                for (int i = 0; i < 8; i++)
+                {
+                    placeFigure(pawns[i]);
+                    placeFigure(otherFigures[i]);
+                }
+                placeBlackFigures(isStandardChess);
             }
-
-
+            
         }
         public void Move(Figure f, char x, int y)
         
