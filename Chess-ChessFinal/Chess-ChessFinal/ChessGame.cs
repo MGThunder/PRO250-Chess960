@@ -13,8 +13,15 @@ namespace Chess
         public ChessGame(bool isStandardChess)
         {
             board = new ChessBoard();
-            board.placeBlackFigures(isStandardChess);
-            board.placeWhiteFigures(isStandardChess);
+            if (isStandardChess)
+            {
+                board.placeBlackFigures(isStandardChess);
+                board.placeWhiteFigures(isStandardChess);
+            }
+            else if (!isStandardChess)
+            {
+                board.placeWhiteFigures(isStandardChess);
+            }
             lastMovedWhite=false;
           
         }
